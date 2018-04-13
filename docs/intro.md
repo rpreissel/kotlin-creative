@@ -1,11 +1,17 @@
 <br/>
-<br/>
+
 
 ## Kreativer Einsatz von Kotlin
 
 Jax, 26.04.2018, Mainz
 
 [@RenePreissel](https://twitter.com/RenePreissel)
+
+<br/>
+<br/>
+<br/>
+
+<small>https://github.com/rpreissel/kotlin-creative.git</small>
 
 ---
 
@@ -149,4 +155,3 @@ fun info(msg: () -> Any?) {
 <small class="fragment current-only" data-code-focus="4-6"></small>
 <small class="fragment current-only" data-code-focus="4, 12"></small>
 <small class="fragment current-only" data-code-focus="14"></small>
-
