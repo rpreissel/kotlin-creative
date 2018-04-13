@@ -1,0 +1,46 @@
+@startuml
+
+skinparam monochrome true
+skinparam shadowing false
+skinparam classAttributeIconSize 0
+skinparam DefaultFontName arial
+skinparam DefaultFontSize 12
+skinparam ClassFontStyle bold
+hide empty fields
+hide empty methods
+hide circle
+
+interface DatabaseTests {
+    void createConnection()
+    {method} ...
+}
+
+class MySqlDatabaseTests <<DatabaseImpl>> implements DatabaseTests {
+   void createConnection()
+   {method} ...
+}
+class PgDatabaseTests <<DatabaseImpl>> implements DatabaseTests {
+   void createConnection()
+   {method} ...
+}
+
+abstract class QueryTests <<TestsImpl>> implements DatabaseTests {
+    {method} <<test>> selectLiteral()
+    {method} <<test>> selectFromLimit()
+    {method} ...
+}
+
+abstract class DefinitionTests <<TestsImpl>> implements DatabaseTests {
+    {method} <<test>> tableExists()
+    {method} <<test>> columnsWithDefaults()
+    {method} ...
+}
+
+class MySqlQueryTests extends QueryTests, MySqlDatabaseTests
+class MySqlDefinitionTests extends DefinitionTests, MySqlDatabaseTests
+
+class PgQueryTests extends QueryTests, PgDatabaseTests
+class PgDefinitionTests extends DefinitionTests, PgDatabaseTests
+
+
+@enduml
