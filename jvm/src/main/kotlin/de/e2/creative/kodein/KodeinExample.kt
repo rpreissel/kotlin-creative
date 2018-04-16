@@ -38,4 +38,6 @@ fun main(args: Array<String>) {
     datasource.connection.use { conn ->
         println(conn.metaData.url)
     }
+
+    Kodein.direct {  }
 }

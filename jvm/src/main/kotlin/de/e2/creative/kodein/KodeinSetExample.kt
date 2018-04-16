@@ -1,7 +1,7 @@
 package de.e2.creative.kodeinset
 
-import de.e2.creative.kodeinfun.Kodein
 import org.h2.jdbcx.JdbcDataSource
+import org.kodein.di.Kodein
 import org.kodein.di.direct
 import org.kodein.di.generic.bind
 import org.kodein.di.generic.inSet
