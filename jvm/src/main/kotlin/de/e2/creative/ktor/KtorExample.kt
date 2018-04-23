@@ -15,6 +15,7 @@ import io.ktor.locations.get
 import io.ktor.locations.locations
 import io.ktor.response.respondText
 import io.ktor.response.respondWrite
+import io.ktor.routing.Routing
 import io.ktor.routing.get
 import io.ktor.routing.routing
 import io.ktor.server.engine.embeddedServer
@@ -54,7 +55,7 @@ fun Application.main() {
     }
 
 
-    routing {
+    install(Routing) {
         get("/lines/{times...}") {
             //Parameters ist keine Map, Operator [] wurde überladen
             val times = call.parameters["times"]?.toInt() ?: 1
@@ -73,16 +74,16 @@ fun Application.main() {
                     title {
                         // Unary Operator zum Hinzufügen von Strings
                         // Extension nur innerhalb eines Tags sichtbar
-                        +"Locations"
+                        text("Locations")
                     }
                 }
                 body {
                     h1 {
-                        +"Greeter"
+                        text("Greeter")
                     }
                     div {
                         a(locations.href(Hello("Rene"))) {
-                            +"Say Hello"
+                            text("Say Hello")
                         }
                     }
                 }
@@ -93,35 +94,29 @@ fun Application.main() {
             call.respondHtml {
                 head {
                     title {
-                        +"Hello"
+                        text("Hello")
                     }
                 }
                 body {
                     //Wieder Extension Funktion um DSL zu erweitern
-                    greeter {
-                        +"Hello ${hello.name}"
+                    h1 {
+                        text("Hello ${hello.name}")
                     }
                 }
             }
         }
-
-
     }
 
 }
 
 //Extension Funktion um DSL zu erweitern
-fun FlowContent.greeter(greeterBody: FlowContent.() -> Unit) {
-    h1 {
-        greeterBody()
-    }
+fun FlowContent.greeter(greeterBody: FlowContent.() -> Unit) = h1 {
+    greeterBody()
 }
 
 fun main(args: Array<String>) {
     val server = embeddedServer(
-        Netty,
-        port = 8080,
-        module = Application::main
+        Netty, port = 8080, module = Application::main
     )
     server.start(wait = true)
 }

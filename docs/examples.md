@@ -23,8 +23,8 @@ val kodein = Kodein {
 val datasource: DataSource = kodein.direct.instance()
 
 ```
-<small class="fragment current-only" data-code-focus="1"></small>
-<small class="fragment current-only" data-code-focus="2,4"></small>
+<small class="fragment current-only" data-code-focus="1">Lambda++ mit Builder-Kontext</small>
+<small class="fragment current-only" data-code-focus="2,4">Builder-Funktionen und Infix</small>
 <small class="fragment current-only" data-code-focus="6,11"></small>
 
 ---
@@ -32,7 +32,7 @@ val datasource: DataSource = kodein.direct.instance()
 ### Delegated Properties in Kodein
 
 ```kotlin
-class DatabaseService(override val kodein: Kodein) : KodeinAware {
+class DatabaseService() : KodeinGlobalAware {
     val dataSource: DataSource by instance()
     val dbUrl: String by instance("dburl")
 }
@@ -40,19 +40,24 @@ class DatabaseService(override val kodein: Kodein) : KodeinAware {
 
 ```kotlin
 fun main(args: Array<String>) {
-    val kodein = Kodein {
+    Kodein.global.addConfig {
         constant("dburl") with "jdbc:h2:mem:singleton"
         bind<DataSource>() with singleton {
             JdbcDataSource().apply { setURL(instance("dburl")) }
         }
     }
-    val databaseService = DatabaseService(kodein)
+    val databaseService = DatabaseService()
+    println(databaseService.dbUrl)
 }
 ```
 
 <small class="fragment current-only" data-code-focus="2,3"></small>
 <small class="fragment current-only" data-code-focus="1"></small>
 <small class="fragment current-only" data-code-focus="12"></small>
+<small class="fragment current-only" data-code-focus="1,6"></small>
+
+Note:
+  40min
 
 ---
 
@@ -84,6 +89,9 @@ override fun createView(ui: AnkoContext<Context>): View = with(ui) {
 <small class="fragment current-only" data-code-focus="6">Zwei ```this```-Zeiger erlauben die Verknüpfung von ```TextView``` mit ```ConstraintSetBuilder```</small>
 <small class="fragment current-only" data-code-focus="7-10">Mehrere Infix-Funktionen</small>
 
+Note:
+  42min
+
 ---
 
 ### Ktor - Asynchronous Server
@@ -112,10 +120,35 @@ fun Application.main() {
 <small class="fragment current-only" data-code-focus="10,11,12">Builder-Pattern mit Lambda++</small>
 <small class="fragment current-only" data-code-focus="13">Operator</small>
 <small class="fragment current-only" data-code-focus="2,12">URL wird anhand der ```Hello```-Klasse erzeugt</small>
-<small class="fragment current-only" data-code-focus="12">```locations``` kommt über eine Extension-Funktion</small>
+
+Note:
+  45min
+
+--
+
+### Ktor - Asynchronous Server
+
+```kotlin
+@Location("/") class Index()
+@Location("/hello/{name}") class Hello(val name: String)
+
+fun Application.main() {
+    install(Locations)
+
+    routing {
+        get<Index> {
+            call.respondHtml {
+                body {
+                    div {
+                        a(locations.href(Hello("Rene"))) {
+                            +"Say Hello"
+                        }
+...
+```
+
 <small class="fragment current-only" data-code-focus="5">Was ist das?</small>
 
----
+--
 
 ### Companion-Factory
 
@@ -144,7 +177,10 @@ install(Locations)
 <small class="fragment current-only" data-code-focus="11"></small>
 <small class="fragment current-only" data-code-focus="16">Companion wird als Factory übergeben und erzeugt das Feature</small>
 
----
+Note:
+  45min
+
+--
 
 ### Kooby/Jooby - Web Framework
 
@@ -166,7 +202,7 @@ fun main(args: Array<String>) {
 <small class="fragment current-only" data-code-focus="9">```::App``` ist Referenz auf Konstruktor</small>
 <small class="fragment current-only" data-code-focus="1,9">Vererbung notwendig da API eine Subklasse anfordert</small>
 
----
+--
 
 ### Spek - Specification Framework
 
@@ -193,3 +229,6 @@ object AppTest : Spek({
 <small class="fragment current-only" data-code-focus="3-5">Describe / Given / It</small>
 <small class="fragment current-only" data-code-focus="6-13">REST-assured</small>
 <small class="fragment current-only" data-code-focus="12">Infix von Kluent</small>
+
+Note:
+  50min  

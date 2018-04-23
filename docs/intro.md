@@ -69,6 +69,9 @@ override fun createView(ui: AnkoContext<Context>): View = with(ui) {
     * Kodein, Anko, Ktor
     * ...
 
+Note:
+5min
+
 ---
 
 ### Kotlin-Intro
@@ -125,7 +128,7 @@ fun main(args: Array<String>) : Unit {
 
 <small class="fragment current-only" data-code-focus="3"></small>
 <small class="fragment current-only" data-code-focus="7"></small>
-<small class="fragment current-only" data-code-focus="10-12"></small>
+<small class="fragment current-only" data-code-focus="3,10-12"></small>
 <small class="fragment current-only" data-code-focus="15"></small>
 
 ---
@@ -155,3 +158,6 @@ fun info(msg: () -> Any?) {
 <small class="fragment current-only" data-code-focus="4-6"></small>
 <small class="fragment current-only" data-code-focus="4, 12"></small>
 <small class="fragment current-only" data-code-focus="14"></small>
+
+Note:
+10min

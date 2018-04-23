@@ -1,13 +1,21 @@
 ### Was konnte ich nicht zeigen
 
+<ul>
 <small>
- * Delegation Interfaces für "Mehrfachvererbung" <br/>(siehe Tests in Squash)
- * ```@DslMarker``` um Probleme mit Verschachtelung zu vermeiden<br/> (siehe ```ContextDsl``` in Ktor)
- * Inline / ```@PublishedApi``` um eigene effiziente Kontrollstrukturen zu bauen
- * Inline Reified um auf die Klasse von generische Typparameter zuzugreifen 
- * Interfaces als Anker für Extension-Funktionen <br/>(siehe ```AnkoLogger```)
-
+ <li class="fragment">Delegation Interfaces für "Mehrfachvererbung" <br/>(siehe Tests in Squash)</li>
+ <br/>
+ <li class="fragment">```@DslMarker``` um Probleme mit Verschachtelung zu vermeiden<br/> (siehe ```HtmlTagMarker``` in Ktor)</li>
+ <br/>
+ <li class="fragment">Inline / ```@PublishedApi``` um eigene effiziente Kontrollstrukturen zu bauen</li>
+ <br/>
+ <li class="fragment">Inline Reified um auf die Klasse von generische Typparameter zuzugreifen</li>
+ <br/>
+ <li class="fragment">Interfaces als Anker für Extension-Funktionen <br/>(siehe ```AnkoLogger```)</li>
 </small>
+</ul>
+
+Note:
+52Min
 
 ---
 
@@ -27,6 +35,8 @@
 
 ### Links I
 <small>https://kotlinlang.org/</small>
+<br/>
+<small>https://github.com/mcxiaoke/awesome-kotlin</small>
 <br/>
 <small>https://ktor.io</small>
 <br/>

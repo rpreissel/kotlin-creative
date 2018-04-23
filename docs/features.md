@@ -138,6 +138,9 @@ val area: Double
 <small class="fragment current-only" data-code-focus="13" data-fragment-index="5"></small>
 <small class="fragment current-only" data-code-focus="14" data-fragment-index="6"></small>
 
+Note:
+14min
+
 ---
 
 ### KotlinJS / React
@@ -178,6 +181,10 @@ p("App-intro") {
     * Bereitstellen von speziellen Funktionen im Code-Block
     * Vermeidung von wiederholenden expliziten Parametern
     * Umsetzung eines Builder-Patterns - Zusammensetzen von komplexen Objekten
+
+Note:
+16min
+
 
 ---
 
@@ -288,6 +295,9 @@ fun RBuilder.logo(height: Int = 100) {
     * Vermeidung von Vererbung
     * Umsetzung von erweiterbareren DSLs
 
+Note:
+21min
+
 ---
 
 ### Lokale Extension-Funktionen
@@ -372,6 +382,8 @@ class Ticker(props: TickerProps) : RComponent<TickerProps, TickerState>(props) {
     * Implizite Übergabe von Kontext (```this```) an Hilfsfunktionen
     * Impliziter Aufruf von Methoden bei zwei Typen <br/>(zwei ```this```-Zeiger)
 
+Note:
+  25min
 
 ---
 
@@ -464,6 +476,9 @@ val allNamesWithCities = (Persons innerJoin Addresses)
     * 'Fluent' APIs
     * Gut geeignet für algebraische Domänen
 
+Note:
+  29min
+
 ---
 
 ### Delegated Properties
@@ -482,7 +497,7 @@ class Circle(val radius: Double) {
 ```kotlin
 fun <T> lazy(initializer: () -> T): Lazy<T> = ...
 
-operator fun <T> Lazy<T>.getValue(thisRef: Any?, 
+operator fun <T> Lazy<T>.getValue(thisRef: Any?,
                                   property: KProperty<*>): T = value
 ```
 </div>
@@ -549,6 +564,8 @@ val helloTask by tasks.creating {
     * Implementierung von verschiedenen Entwurfsmuster <br/>(Proxy, Observer, etc)
     * Vermeidung der doppelter Nennung von Variablennamen
 
+Note:
+  33min
 
 ---
 
@@ -633,3 +650,5 @@ tasks {
     * Kompakterer Code
     * Eher geeignet für mathematische Domänen
 
+Note:
+  38min

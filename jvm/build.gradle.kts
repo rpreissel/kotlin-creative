@@ -12,6 +12,7 @@ val kotlinCoroutineVersion: String by extra { "0.22.5" }
 val ktorVersion: String by extra { "0.9.1" }
 val joobyVersion: String by extra { "1.2.3" }
 val spekVersion: String by extra { "1.1.5" }
+val kodeinVersion: String by extra { "5.0.0" }
 
 
 buildscript {
@@ -86,8 +87,9 @@ dependencies {
 
     compile("org.jetbrains.exposed:exposed:0.9.1")
     compile("com.h2database:h2:1.4.196")
-    compile("org.kodein.di:kodein-di-generic-jvm:5.0.0")
-//    compile("com.github.salomonbrys.kodein:kodein:4.1.0")
+    compile("org.kodein.di:kodein-di-generic-jvm:$kodeinVersion")
+    compile("org.kodein.di:kodein-di-conf-jvm:$kodeinVersion")
+//
     compile("com.beust:klaxon:2.1.6")
     compile("com.natpryce:konfig:1.6.1.0")
 
