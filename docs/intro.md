@@ -99,9 +99,10 @@ fun main(args: Array<String>) {
 <small class="fragment current-only" data-code-focus="14"></small>
 <small class="fragment current-only" data-code-focus="15"></small>
 <small class="fragment current-only" data-code-focus="2-4"></small>
-<small class="fragment current-only" data-code-focus="5-8"></small>
-<small class="fragment current-only" data-code-focus="9-10"></small>
 <small class="fragment current-only" data-code-focus="16"></small>
+<small class="fragment current-only" data-code-focus="5-8"></small>
+<small class="fragment current-only" data-code-focus="16"></small>
+<small class="fragment current-only" data-code-focus="9-10"></small>
 
 ---
 

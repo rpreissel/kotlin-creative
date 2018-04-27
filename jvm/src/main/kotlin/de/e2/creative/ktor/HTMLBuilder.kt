@@ -15,7 +15,6 @@ import kotlinx.html.a
 import kotlinx.html.b
 import kotlinx.html.body
 import kotlinx.html.div
-import kotlinx.html.dom.createHTMLDocument
 import kotlinx.html.h1
 import kotlinx.html.h2
 import kotlinx.html.head

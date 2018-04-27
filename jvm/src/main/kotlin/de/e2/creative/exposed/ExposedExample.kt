@@ -26,8 +26,8 @@ fun main(args: Array<String>) {
     transaction {
         create(Addresses, Persons)
 
-        val hamburgId = Addresses.insert {
-            it[city] = "Hamburg"
+        val hamburgId = Addresses.insert { stm ->
+            stm[city] = "Hamburg"
         } get Addresses.id
 
         val frankfurtId = Addresses.insert {

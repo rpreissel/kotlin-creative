@@ -42,7 +42,7 @@ class Circle(val radius: Double) {
 open class MyLogging : KLogging() {
     fun <T> withTracing(
         prefix: String, block: () -> T
-    ): T = try {
+    ) = try {
         logger.info("$prefix - begin")
         block()
     } finally {
@@ -52,11 +52,12 @@ open class MyLogging : KLogging() {
 ```
 </div>
 <small class="fragment current-only" data-code-focus="2-4" data-fragment-index="1"></small>
-<small class="fragment current-only" data-code-focus="7" data-fragment-index="3"></small>
+<small class="fragment current-only" data-code-focus="5,7" data-fragment-index="3"></small>
 <small class="fragment current-only" data-code-focus="8" data-fragment-index="4"></small>
 <small class="fragment current-only" data-code-focus="9" data-fragment-index="5"></small>
 <small class="fragment current-only" data-code-focus="10-15" data-fragment-index="6"></small>
-<small class="fragment current-only" data-code-focus="2-4" data-fragment-index="7"></small>
+<small class="fragment current-only" data-code-focus="12" data-fragment-index="7"></small>
+<small class="fragment current-only" data-code-focus="2-4" data-fragment-index="8"></small>
 
 ---
 
@@ -81,7 +82,7 @@ class Circle(val radius: Double) {
 
 ---
 
-### Tracing mit Kontext
+### Lambda mit Kontext
 
 ```kotlin
 class Circle(val radius: Double) {
@@ -105,7 +106,7 @@ class TracingContext(val logger: KLogger, val prefix: String) {
 </div>
 <small class="fragment current-only" data-code-focus="4,6" data-fragment-index="1">In Java: ```tracer.trace()``` oder mittels ```ThreadLocal ```</small>
 <small class="fragment current-only" data-code-focus="10" data-fragment-index="3"></small>
-<small class="fragment current-only" data-code-focus="4,6,11-13" data-fragment-index="4"></small>
+<small class="fragment current-only" data-code-focus="4,6,11-13" data-fragment-index="4">```this```-Zeiger wird zu ```TracingContext```</small>
 
 ---
 
@@ -194,13 +195,13 @@ Note:
 val url: URL = StringUtil.toURL("http://localhost:8080")
 
 object StringUtil {
-    fun toURL(s: String) = URL(s)
+    fun toURL(s: String): URL = URL(s)
 }
 ```
 <br/>
 <div class="fragment" data-fragment-index="3">
 ```kotlin
-fun String.toURL() = URL(this)
+fun String.toURL(): URL = URL(this)
 
 val url = "http://localhost:8080".toURL()
 ```
@@ -428,8 +429,8 @@ object Addresses : Table() {
     val city = varchar("city", 50)
 }
 
-Addresses.insert {
-    it[city] = "Hamburg"
+Addresses.insert { stm ->
+    stm[city] = "Hamburg"
 }
 ```
 
@@ -537,7 +538,7 @@ val helloTask by tasks.creating {
 ```kotlin
 val clean = tasks["clean"]
 
-val helloTask = tasks.create("helloWorld") {
+val helloTask = tasks.create("helloTask") {
     dependsOn(clean)
     doLast { println("Hello") }
 }

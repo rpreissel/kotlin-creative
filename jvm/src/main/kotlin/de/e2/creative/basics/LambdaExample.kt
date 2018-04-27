@@ -31,7 +31,7 @@ open class MyLogging : KLogging() {
     fun <T> withTracing(
         prefix: String,
         block: () -> T
-    ): T = try {
+    ) = try {
         logger.info("$prefix - begin")
         block()
     } finally {
