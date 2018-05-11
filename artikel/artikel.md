@@ -1,4 +1,4 @@
-# Kotlin Advanced (Arbeitstitel)
+# Innovative Sprach-Features in Kotlin
 
 ## Intro
 
