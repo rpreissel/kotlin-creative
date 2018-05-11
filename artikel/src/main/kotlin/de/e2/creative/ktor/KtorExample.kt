@@ -35,13 +35,12 @@ class Index()
 @Location("/hello/{name}")
 class Hello(val name: String)
 
-//Erzeugen einer Extension-Funktion um Zugriff auf Funktionen und Zustand zu bekommen
+
 fun Application.main() {
     install(DefaultHeaders)
     install(Compression)
     install(Locations)
-    //Companion als Factory, Configuration ..., Class als Verhalten
-    //Lambda With Receiver für DSL
+
     install(CallLogging) {
         level = Level.INFO
     }
@@ -56,24 +55,10 @@ fun Application.main() {
 
 
     install(Routing) {
-        get("/lines/{times...}") {
-            //Parameters ist keine Map, Operator [] wurde überladen
-            val times = call.parameters["times"]?.toInt() ?: 1
-            //Lambda with receiver für den Writer
-            call.respondWrite {
-                repeat(times) {
-                    appendln("Line $it")
-                }
-            }
-        }
-
-        //reified Typ um zu Typisieren und Objekte anlegen zu können
         get<Index> {
             call.respondHtml {
                 head {
                     title {
-                        // Unary Operator zum Hinzufügen von Strings
-                        // Extension nur innerhalb eines Tags sichtbar
                         text("Locations")
                     }
                 }
@@ -98,7 +83,6 @@ fun Application.main() {
                     }
                 }
                 body {
-                    //Wieder Extension Funktion um DSL zu erweitern
                     h1 {
                         text("Hello ${hello.name}")
                     }
@@ -109,7 +93,6 @@ fun Application.main() {
 
 }
 
-//Extension Funktion um DSL zu erweitern
 fun FlowContent.greeter(greeterBody: FlowContent.() -> Unit) = h1 {
     greeterBody()
 }
