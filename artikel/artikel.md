@@ -12,7 +12,8 @@ weitere Features verwendet werden.
 
 Falls Sie noch nicht mit den Grundlagen von Kotlin vertraut sind, empfehle ich diesen
 [Einstieg](https://www.informatik-aktuell.de/entwicklung/programmiersprachen/ist-kotlin-das-bessere-java-eine-einfuehrung.html).
-Die Beispiele finden Sie in diesem [Github-Projekt]().
+
+Die folgenden Beispiele finden Sie in diesem [Github-Projekt](https://github.com/rpreissel/kotlin-creative/tree/master/artikel).
 
 ## Extension-Funktionen - Weg mit den Util-Klassen
 
